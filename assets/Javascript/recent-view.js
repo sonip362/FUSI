@@ -1,10 +1,21 @@
 // --- Recently Viewed Component ---
 
-// Initialize state (will be synced from localStorage in main.js if needed, or kept here)
-let recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+// Initialize state
+let recentlyViewed = [];
+const initializeRecentlyViewedState = () => {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'rejected') {
+        recentlyViewed = [];
+    } else {
+        recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+    }
+};
+initializeRecentlyViewedState();
 
 // Save to local storage
 const saveRecentlyViewed = () => {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent !== 'accepted') return;
     localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
 };
 
@@ -128,4 +139,12 @@ const renderRecentlyViewed = async () => {
     } catch (err) {
         console.error('Error rendering recently viewed:', err);
     }
+};
+
+// Clear all recently viewed
+const clearRecentlyViewed = () => {
+    recentlyViewed = [];
+    saveRecentlyViewed();
+    renderRecentlyViewed();
+    if (typeof showToast === 'function') showToast('Recently viewed cleared', 'success');
 };

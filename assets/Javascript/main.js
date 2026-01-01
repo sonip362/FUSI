@@ -4,6 +4,13 @@ let wishlist = [];
 
 // --- State Management ---
 const loadState = () => {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent === 'rejected') {
+        cart = [];
+        wishlist = [];
+        return;
+    }
+
     try {
         cart = JSON.parse(localStorage.getItem('ris_cart') || '[]');
     } catch {
@@ -19,6 +26,11 @@ const loadState = () => {
 };
 
 const saveState = () => {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent !== 'accepted') {
+        // Only save in memory if rejected or not yet decided
+        return;
+    }
     localStorage.setItem('ris_cart', JSON.stringify(cart));
     localStorage.setItem('ris_wishlist', JSON.stringify(wishlist));
 };
@@ -309,8 +321,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const clearWishlistBtn = document.getElementById('clear-wishlist-btn');
 
+    const clearRecentlyViewedBtn = document.getElementById('clear-recently-viewed-btn');
+
     if (clearCartBtn) clearCartBtn.addEventListener('click', clearCart);
     if (clearWishlistBtn) clearWishlistBtn.addEventListener('click', clearWishlist);
+    if (clearRecentlyViewedBtn) clearRecentlyViewedBtn.addEventListener('click', clearRecentlyViewed);
 
     // --- Intersection Observer ---
     if ("IntersectionObserver" in window) {
@@ -425,82 +440,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Keyboard Shortcuts ---
-    document.addEventListener('keydown', (e) => {
-        const isInput = ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName);
-
-        if (e.key === 'Escape') {
-            if (wishlistModal) wishlistModal.close();
-            if (cartModal) cartModal.close();
-            if (quickViewModalCtl) quickViewModalCtl.close();
-            if (typeof closeInfoModal === 'function') closeInfoModal();
-
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-
-            if (isInput) {
-                e.target.blur();
-            }
-            return;
-        }
-
-        if ((e.key === '/' && !isInput) || (e.ctrlKey && e.key === 'k')) {
-            e.preventDefault();
-            const sInput = document.getElementById('product-search-input');
-            const collectionSection = document.getElementById('shop-by-collection');
-
-            if (collectionSection && sInput) {
-                collectionSection.scrollIntoView({ behavior: 'smooth' });
-                setTimeout(() => sInput.focus({ preventScroll: true }), 500);
-            }
-            return;
-        }
-
-        if (isInput) return;
-
-        if (e.key === 'ArrowLeft') {
-            const prevBtn = document.getElementById('carousel-prev-btn');
-            if (prevBtn) { e.preventDefault(); prevBtn.click(); }
-        }
-        if (e.key === 'ArrowRight') {
-            const nextBtn = document.getElementById('carousel-next-btn');
-            if (nextBtn) { e.preventDefault(); nextBtn.click(); }
-        }
-
-        if (e.shiftKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
-            e.preventDefault();
-            const sectionIds = ['home', 'about', 'shop-by-collection', 'limited', 'testimonials', 'recently-viewed', 'faq'];
-            const sections = sectionIds.map(id => document.getElementById(id)).filter(el => el);
-            const currentScroll = window.scrollY;
-            const buffer = 50;
-
-            if (e.key === 'ArrowDown') {
-                const nextSection = sections.find(sec => sec.offsetTop > currentScroll + buffer);
-                if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                const prevSection = [...sections].reverse().find(sec => sec.offsetTop < currentScroll - buffer);
-                if (prevSection) prevSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        if (e.key === 'c' || e.key === 'C') {
-            e.preventDefault();
-            if (cartModal) cartModal.open();
-        }
-
-        if (e.key === 'w' || e.key === 'W') {
-            e.preventDefault();
-            if (wishlistModal) wishlistModal.open();
-        }
-
-        if (e.key === '?') {
-            e.preventDefault();
-            if (typeof showToast === 'function') showToast('Shortcuts: Shift+↑/↓  (Nav), ←/→ (Slide), / (Search), C (Cart), W (Wishlist), Esc (Close Modals)', 'success', 5000);
-        }
-    });
-
 });
 
 // carousel logic
@@ -611,3 +550,4 @@ const closeInfoModal = () => {
         infoModal.classList.add('hidden');
     }, 300);
 };
+
