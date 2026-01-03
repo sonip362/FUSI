@@ -2217,7 +2217,7 @@ a, button {
     transition-duration: 300ms;
     transform: translateY(100%);
   }
-  #sort-modal.open #sort-panel {
+  #sort-modal.modal-open #sort-panel {
     transform: translateY(0);
   }
 }
