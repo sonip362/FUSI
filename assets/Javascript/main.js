@@ -93,10 +93,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuLinks = document.querySelectorAll('.mobile-menu-link');
 
     if (menuBtn && closeBtn && menu && menuLinks.length > 0) {
-        menuBtn.addEventListener('click', () => menu.classList.remove('hidden'));
-        closeBtn.addEventListener('click', () => menu.classList.add('hidden'));
+        menuBtn.addEventListener('click', () => {
+            menu.classList.remove('hidden');
+            document.documentElement.classList.add('scroll-lock');
+            document.body.classList.add('scroll-lock');
+        });
+        closeBtn.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            document.documentElement.classList.remove('scroll-lock');
+            document.body.classList.remove('scroll-lock');
+        });
         menuLinks.forEach(link => {
-            link.addEventListener('click', () => menu.classList.add('hidden'));
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                document.documentElement.classList.remove('scroll-lock');
+                document.body.classList.remove('scroll-lock');
+            });
         });
     }
 
@@ -352,6 +364,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Carousel ---
     if (typeof initializeLimitedCarousel === 'function') initializeLimitedCarousel();
+    if (typeof initializeTestimonialsCarousel === 'function') initializeTestimonialsCarousel();
 
     // --- Initial Renders & Inits ---
     (async () => {
@@ -551,3 +564,63 @@ const closeInfoModal = () => {
     }, 300);
 };
 
+
+const initializeTestimonialsCarousel = () => {
+    const carousel = document.getElementById('testimonials-carousel');
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('testimonials-prev-btn');
+    const nextBtn = document.getElementById('testimonials-next-btn');
+    const indicators = document.querySelectorAll('.testimonial-indicator');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    if (totalSlides === 0) return;
+
+    const showSlide = (index) => {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+
+        currentIndex = index;
+
+        slides.forEach((slide, i) => {
+            if (i === currentIndex) {
+                slide.classList.remove('opacity-0', 'pointer-events-none');
+                slide.classList.add('z-10');
+                slide.classList.remove('z-0');
+            } else {
+                slide.classList.add('opacity-0', 'pointer-events-none');
+                slide.classList.remove('z-10');
+                slide.classList.add('z-0');
+            }
+        });
+
+        indicators.forEach((indicator, i) => {
+            if (i === currentIndex) {
+                indicator.classList.remove('bg-gray-300', 'hover:bg-gray-200');
+                indicator.classList.add('bg-royal-black');
+            } else {
+                indicator.classList.add('bg-gray-300', 'hover:bg-gray-200');
+                indicator.classList.remove('bg-royal-black');
+            }
+        });
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+    });
+
+    showSlide(0);
+
+    let autoPlayInterval = setInterval(() => showSlide(currentIndex + 1), 6000);
+
+    carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    carousel.addEventListener('mouseleave', () => {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => showSlide(currentIndex + 1), 6000);
+    });
+};

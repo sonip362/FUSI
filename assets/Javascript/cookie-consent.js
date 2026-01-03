@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('ris_cart');
             localStorage.removeItem('ris_wishlist');
             localStorage.removeItem('recentlyViewed');
+            localStorage.removeItem('fusion_chat_history');
 
             hideBanner();
             if (typeof showToast === 'function') showToast('Privacy mode active', 'success');

@@ -46,15 +46,21 @@ document.addEventListener('keydown', (e) => {
 
     if (e.shiftKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
         e.preventDefault();
-        const sectionIds = ['home', 'about', 'shop-by-collection', 'limited', 'testimonials', 'recently-viewed', 'faq'];
-        const sections = sectionIds.map(id => document.getElementById(id)).filter(el => el);
+        // Correct order based on DOM structure
+        const sectionIds = ['home', 'shop-by-collection', 'recently-viewed', 'limited', 'testimonials', 'faq', 'about', 'footer'];
+        // Filter for existing and visible elements (offsetParent !== null means display != none)
+        const sections = sectionIds
+            .map(id => document.getElementById(id))
+            .filter(el => el && el.offsetParent !== null)
+            .sort((a, b) => a.offsetTop - b.offsetTop); // Double check sort by offsetTop
+
         const currentScroll = window.scrollY;
         const buffer = 50;
 
         if (e.key === 'ArrowDown') {
             const nextSection = sections.find(sec => sec.offsetTop > currentScroll + buffer);
             if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
-        } else {
+        } else if (e.key === 'ArrowUp') {
             const prevSection = [...sections].reverse().find(sec => sec.offsetTop < currentScroll - buffer);
             if (prevSection) prevSection.scrollIntoView({ behavior: 'smooth' });
         }

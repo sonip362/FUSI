@@ -15,80 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <style>
-        /* Gen-Z Modern Typography System */
-        :root {
-            --font-sans: 'Outfit', sans-serif !important;
-            --font-serif: 'Syne', sans-serif !important;
 
-            /* Softer, more rounded aesthetic */
-            --radius-sm: 0.5rem !important;
-            --radius-md: 1rem !important;
-            --radius-lg: 1.5rem !important;
-            --radius-xl: 2rem !important;
-            --radius-2xl: 3rem !important;
-        }
-
-        /* Typography refinements */
-        body {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .font-serif {
-            font-family: var(--font-serif);
-            letter-spacing: -0.02em;
-            font-weight: 700;
-        }
-
-        /* Smooth, rounded UI elements */
-        button,
-        input,
-        select,
-        textarea {
-            border-radius: 9999px !important;
-            transition: all 0.3s ease;
-        }
-
-        .rounded-lg,
-        .rounded-xl {
-            border-radius: var(--radius-lg) !important;
-        }
-
-        /* Softer shadows for depth */
-        .shadow-sm {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
-        }
-
-        .shadow-lg {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        /* Smooth hover states */
-        a,
-        button {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Collection cards with modern feel */
-        .collection-card {
-            border-radius: var(--radius-lg) !important;
-        }
-
-        /* Pill-shaped badges */
-        .badge {
-            border-radius: 9999px !important;
-            font-weight: 600;
-            font-size: 0.7rem;
-        }
-    </style>
 
 
 </head>
@@ -104,7 +31,7 @@
                     Fusion
                 </a>
 
-                <div class="hidden md:flex md:items-center md:space-x-8">
+                <div class=" hidden md:flex md:items-center md:space-x-8">
                     <a href="#home" class="text-ivory hover:text-gray-300 transition-colors">Home</a>
                     <a href="#shop-by-collection"
                         class="text-ivory hover:text-gray-300 transition-colors">Collections</a>
@@ -115,6 +42,14 @@
 
                 <div class="flex items-center space-x-4">
                     <div class="hidden md:flex items-center space-x-4">
+                        <a href="#" id="header-ai-btn" aria-label="AI Assistant"
+                            class="text-white hover:text-gray-300 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                            </svg>
+                        </a>
                         <a href="#" id="wishlist-btn-desktop" aria-label="Wishlist"
                             class="text-white hover:text-gray-300 transition-colors has-badge">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -134,7 +69,14 @@
                             <span id="cart-badge-desktop" class="badge hidden" aria-hidden="true">0</span>
                         </a>
                     </div>
-
+                    <a href="#" id="mobile-header-ai-btn" aria-label="AI Assistant"
+                        class="md:hidden text-white hover:text-gray-300 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                        </svg>
+                    </a>
                     <button id="mobile-menu-btn" type="button"
                         class="md:hidden p-2 text-white hover:text-gray-300 transition-colors" aria-label="Open menu">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -163,7 +105,9 @@
                             </svg>
                         </button>
                     </div>
+
                     <div class="mt-6">
+
                         <nav class="grid gap-y-8">
                             <a href="#home"
                                 class="mobile-menu-link -m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-base font-medium text-gray-700 hover:text-royal-black">Home</a>
@@ -174,6 +118,7 @@
                             <a href="#faq" class="text-gray-700 hover:text-royal-black transition-colors">FAQs</a>
                             <a href="#testimonials"
                                 class="text-gray-700 hover:text-royal-black transition-colors">Reviews</a>
+
                             <a href="#" id="wishlist-btn-mobile"
                                 class="mobile-menu-link -m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-base font-medium text-gray-700 hover:text-royal-black has-badge">Wishlist
                                 <span id="wishlist-badge-mobile" class="badge hidden" aria-hidden="true">0</span>
@@ -217,6 +162,22 @@
             </div>
         </section>
 
+        <!-- Recently Viewed Section -->
+        <section id="recently-viewed" class="py-20 sm:py-28 fade hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-serif text-center mb-16 relative">
+                    Recently Viewed
+                    <button id="clear-recently-viewed-btn" type="button"
+                        class="block mx-auto mt-4 text-xs font-sans text-royal-black transition-colors uppercase tracking-[0.2em]">
+                        Clear history
+                    </button>
+                </h2>
+                <div id="recently-viewed-grid"
+                    class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
+                    <!-- Products will be injected dynamically -->
+                </div>
+            </div>
+        </section>
 
         <section id="shop-by-collection" class="py-20 sm:py-28 fade">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -247,85 +208,74 @@
                             </div>
                         </div>
 
-                        <!-- Category Filters -->
-                        <div class="relative w-full sm:w-auto">
-                            <select id="filter-material"
-                                class="w-full sm:w-40 py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-royal-black focus:border-royal-black transition appearance-none text-gray-700">
-                                <option value="all" selected>All Styles</option>
-                                <option value="casual">Casual</option>
-                                <option value="formal">Formal</option>
-                                <option value="athleisure">Athleisure</option>
-                                <option value="streetwear">Streetwear</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
+                        <!-- Category Filters & Sorting -->
+                        <div class="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+                            <!-- Modern Filter Button -->
+                            <button type="button" id="open-filters-btn"
+                                class="flex items-center gap-2 px-6 py-2.5 bg-white border border-gray-200 rounded-full hover:border-royal-black hover:bg-gray-50 transition-all shadow-sm group">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-500 group-hover:text-royal-black">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="relative w-full sm:w-auto">
-                            <select id="filter-price-range"
-                                class="w-full sm:w-40 py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-royal-black focus:border-royal-black transition appearance-none text-gray-700">
-                                <option value="all" selected>All Prices</option>
-                                <option value="budget">Budget (Under ₹1,000)</option>
-                                <option value="mid">Mid (₹1,000-₹2,000)</option>
-                                <option value="premium">Premium (₹2,000+)</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
+                                <span class="text-sm font-semibold text-gray-700">Filters</span>
+                                <span id="filter-count-badge"
+                                    class="hidden ml-1 px-2 py-0.5 text-[10px] bg-royal-black text-ivory rounded-full">0</span>
+                            </button>
+
+                            <!-- Modern Sort Button -->
+                            <button type="button" id="open-sort-btn"
+                                class="flex items-center gap-2 px-6 py-2.5 bg-white border border-gray-200 rounded-full hover:border-royal-black hover:bg-gray-50 transition-all shadow-sm group">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-4 h-4 text-gray-500 group-hover:text-royal-black">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="relative w-full sm:w-auto">
-                            <select id="filter-features"
-                                class="w-full sm:w-40 py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-royal-black focus:border-royal-black transition appearance-none text-gray-700">
-                                <option value="all" selected>All Features</option>
-                                <option value="minimalist">Minimalist</option>
-                                <option value="graphic">Graphic</option>
-                                <option value="layered">Layered</option>
-                                <option value="oversized">Oversized</option>
-                                <option value="fitted">Fitted</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
+                                <span class="text-sm font-semibold text-gray-700">Sort By</span>
+                                <span id="current-sort-label" class="text-xs text-gray-400 font-normal">Default</span>
+                            </button>
+
+                            <!-- Reset Filters -->
+                            <button type="button" id="reset-filters-btn"
+                                class="p-2.5 text-gray-500 hover:text-royal-black bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                                aria-label="Reset all filters">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
-                            </div>
+                            </button>
                         </div>
-                        <div class="relative w-full sm:w-auto">
-                            <select id="product-sort-select"
-                                class="w-full sm:w-48 py-2 pl-4 pr-10 border border-gray-300 rounded-full focus:ring-royal-black focus:border-royal-black transition appearance-none text-gray-700">
-                                <option value="default" selected>Sort by...</option>
-                                <option value="name-asc">Name: A-Z</option>
-                                <option value="name-desc">Name: Z-A</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="price-desc">Price: High to Low</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <button type="button" id="reset-filters-btn"
-                            class="p-2 ml-2 text-gray-500 hover:text-royal-black bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-                            aria-label="Reset all filters">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                            </svg>
-                        </button>
                     </div>
-                    <!-- Active Filters Display -->
+
+                    <!-- Hidden Selects to maintain compatibility with existing filter logic -->
+                    <select id="filter-material" class="hidden">
+                        <option value="all" selected>All Styles</option>
+                        <option value="casual">Casual</option>
+                        <option value="formal">Formal</option>
+                        <option value="athleisure">Athleisure</option>
+                        <option value="streetwear">Streetwear</option>
+                    </select>
+                    <select id="filter-price-range" class="hidden">
+                        <option value="all" selected>All Prices</option>
+                        <option value="budget">Budget (Under ₹1,000)</option>
+                        <option value="mid">Mid (₹1,000-₹2,000)</option>
+                        <option value="premium">Premium (₹2,000+)</option>
+                    </select>
+                    <select id="filter-features" class="hidden">
+                        <option value="all" selected>All Features</option>
+                        <option value="minimalist">Minimalist</option>
+                        <option value="graphic">Graphic</option>
+                        <option value="layered">Layered</option>
+                        <option value="oversized">Oversized</option>
+                        <option value="fitted">Fitted</option>
+                    </select>
+                    <select id="product-sort-select" class="hidden">
+                        <option value="default" selected>Sort by...</option>
+                        <option value="name-asc">Name: A-Z</option>
+                        <option value="name-desc">Name: Z-A</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select> <!-- Active Filters Display -->
                     <div id="active-filters-container"
                         class="mt-4 flex flex-wrap items-center justify-center gap-2 hidden min-h-[40px]">
                         <!-- Active filter tags will be injected here -->
@@ -474,27 +424,13 @@
             </div>
         </section>
 
-        <!-- Recently Viewed Section -->
-        <section id="recently-viewed" class="py-20 sm:py-28 fade hidden">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl sm:text-5xl font-serif text-center mb-16 relative">
-                    Recently Viewed
-                    <button id="clear-recently-viewed-btn" type="button"
-                        class="block mx-auto mt-4 text-xs font-sans text-royal-black transition-colors uppercase tracking-[0.2em]">
-                        Clear history
-                    </button>
-                </h2>
-                <div id="recently-viewed-grid"
-                    class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-12">
-                    <!-- Products will be injected dynamically -->
-                </div>
-            </div>
-        </section>
+
 
         <section id="limited" class="py-20 sm:py-28 fade">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative group">
                 <!-- Carousel Container -->
-                <div id="limited-carousel" class="relative overflow-hidden rounded-lg shadow-xl bg-white min-h-[600px]">
+                <div id="limited-carousel"
+                    class="relative overflow-hidden rounded-lg shadow-xl bg-grey-100 min-h-[600px]">
 
                     <!-- Slide 1: Winter Edit (Existing) -->
                     <div
@@ -604,64 +540,110 @@
                 </div>
         </section>
 
-        <section id="testimonials" class="py-20 sm:py-28 bg-beige fade">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section id="testimonials" class="py-20 sm:py-28 bg-gray-400 fade">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative group">
                 <h2 class="text-4xl sm:text-5xl font-serif text-center mb-16">
                     From Our Patrons
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    <div class="bg-gray-500 p-8 rounded-lg shadow-sm">
-                        <div class="flex items-center mb-5">
-                            <img src="./client1.jpg" alt="Client photo for Priya Sharma"
-                                class="w-14 h-14 rounded-full object-cover product-image" width="100" height="100"
-                                loading="lazy" onload="this.classList.add('loaded');">
-                            <div class="ml-4">
-                                <h4 class="text-lg font-serif font-bold">Olivia</h4>
-                                <p class="text-sm text-gray-600">New Orleans</p>
+                <!-- Carousel Container -->
+                <div id="testimonials-carousel"
+                    class="relative overflow-hidden rounded-lg shadow-sm min-h-[400px] bg-gray-200 max-w-4xl mx-auto">
+
+                    <!-- Slide 1 -->
+                    <div
+                        class="testimonial-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 flex items-center justify-center p-8 pointer-events-none">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="flex items-center justify-center mb-6">
+                                <img src="./client1.jpg" alt="Client photo for Olivia"
+                                    class="w-20 h-20 rounded-full object-cover border-4 border-ivory shadow-lg"
+                                    width="100" height="100" loading="lazy" onload="this.classList.add('loaded');">
+                            </div>
+                            <div class="text-center">
+                                <p class="font-sans text-xl italic text-royal-black leading-relaxed mb-6">
+                                    "The tunic top from Fusion is a total vibe! It's so versatile and the quality is
+                                    top-tier. Honestly, I'm obsessed with how it fits. 10/10 recommend for anyone
+                                    looking to level up their look."
+                                </p>
+                                <h4 class="text-xl font-serif font-bold text-royal-black">Olivia</h4>
+                                <p class="text-sm text-gray-600 uppercase tracking-widest mt-1">New Orleans</p>
                             </div>
                         </div>
-                        <p class="font-sans text-lg italic text-royal-black leading-relaxed">
-                            "The tunic top from Fusion is a total vibe! It's so versatile and the quality is top-tier.
-                            Honestly, I'm obsessed with how it fits. 10/10 recommend for anyone looking to level up
-                            their look."
-                        </p>
                     </div>
 
-                    <div class="bg-gray-500 p-8 rounded-lg shadow-sm">
-                        <div class="flex items-center mb-5">
-                            <img src="./client2.jpg" alt="Client photo for Rohan Gupta"
-                                class="w-14 h-14 rounded-full object-cover product-image" width="100" height="100"
-                                loading="lazy" onload="this.classList.add('loaded');">
-                            <div class="ml-4">
-                                <h4 class="text-lg font-serif font-bold">Michael</h4>
-                                <p class="text-sm text-gray-600">London</p>
+                    <!-- Slide 2 -->
+                    <div
+                        class="testimonial-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 flex items-center justify-center p-8 pointer-events-none">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="flex items-center justify-center mb-6">
+                                <img src="./client2.jpg" alt="Client photo for Michael"
+                                    class="w-20 h-20 rounded-full object-cover border-4 border-ivory shadow-lg"
+                                    width="100" height="100" loading="lazy" onload="this.classList.add('loaded');">
+                            </div>
+                            <div class="text-center">
+                                <p class="font-sans text-xl italic text-royal-black leading-relaxed mb-6">
+                                    "This cotton shirt is hands down the best I've owned. The fabric is so breathable
+                                    and the fit is tailored perfectly. It's become a staple in my wardrobe for its
+                                    effortless style and comfort."
+                                </p>
+                                <h4 class="text-xl font-serif font-bold text-royal-black">Michael</h4>
+                                <p class="text-sm text-gray-600 uppercase tracking-widest mt-1">London</p>
                             </div>
                         </div>
-                        <p class="font-sans text-lg italic text-royal-black leading-relaxed">
-                            "This cotton shirt is hands down the best I've owned. The fabric is so breathable and the
-                            fit is tailored perfectly. It's become a staple in my wardrobe for its effortless style and
-                            comfort."
-                        </p>
                     </div>
 
-                    <div class="bg-gray-500 p-8 rounded-lg shadow-sm">
-                        <div class="flex items-center mb-5">
-                            <img src="./client3.jpg" alt="Client photo for Aisha Khan"
-                                class="w-14 h-14 rounded-full object-cover product-image" width="100" height="100"
-                                loading="lazy" onload="this.classList.add('loaded');">
-                            <div class="ml-4">
-                                <h4 class="text-lg font-serif font-bold">Emma</h4>
-                                <p class="text-sm text-gray-600">Delhi</p>
+                    <!-- Slide 3 -->
+                    <div
+                        class="testimonial-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0 flex items-center justify-center p-8 pointer-events-none">
+                        <div class="max-w-2xl mx-auto">
+                            <div class="flex items-center justify-center mb-6">
+                                <img src="./client3.jpg" alt="Client photo for Emma"
+                                    class="w-20 h-20 rounded-full object-cover border-4 border-ivory shadow-lg"
+                                    width="100" height="100" loading="lazy" onload="this.classList.add('loaded');">
+                            </div>
+                            <div class="text-center">
+                                <p class="font-sans text-xl italic text-royal-black leading-relaxed mb-6">
+                                    "The layered jacket is a complete game-changer! It's stylish, sophisticated, and the
+                                    quality is simply unmatched. It provides the perfect amount of warmth without
+                                    feeling bulky."
+                                </p>
+                                <h4 class="text-xl font-serif font-bold text-royal-black">Emma</h4>
+                                <p class="text-sm text-gray-600 uppercase tracking-widest mt-1">Delhi</p>
                             </div>
                         </div>
-                        <p class="font-sans text-lg italic text-royal-black leading-relaxed">
-                            "The layered jacket is a complete game-changer! It's stylish, sophisticated, and the quality
-                            is simply unmatched. It provides the perfect amount of warmth without feeling bulky, making
-                            it my go-to piece for every occasion."
-                        </p>
                     </div>
 
+                    <!-- Navigation Controls -->
+                    <button id="testimonials-prev-btn"
+                        class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-royal-black p-3 rounded-full shadow-lg transition-all z-20"
+                        aria-label="Previous testimonial">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <button id="testimonials-next-btn"
+                        class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-royal-black p-3 rounded-full shadow-lg transition-all z-20"
+                        aria-label="Next testimonial">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+
+                </div>
+
+                <!-- Indicators -->
+                <div class="mt-8 flex justify-center space-x-3">
+                    <button class="testimonial-indicator w-3 h-3 rounded-full bg-royal-black transition-colors"
+                        aria-label="Go to testimonial 1"></button>
+                    <button
+                        class="testimonial-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-200 transition-colors"
+                        aria-label="Go to testimonial 2"></button>
+                    <button
+                        class="testimonial-indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-200 transition-colors"
+                        aria-label="Go to testimonial 3"></button>
                 </div>
             </div>
         </section>
@@ -670,58 +652,71 @@
 
         <section id="faq" class="py-20 sm:py-28 fade">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
-                <h2 class="text-4xl sm:text-5xl font-serif mb-8">
+                <h2 class="text-4xl sm:text-5xl font-serif mb-4">
                     FAQ's
                 </h2>
-                <p class="font-sans text-lg text-gray-700 leading-relaxed">
-                    <span class="block text-left">
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">How do I find my
-                            perfect fit?</strong>
-                        Each product page includes a detailed size guide tailored to the specific cut and fabric of the
-                        garment. If you are between sizes, we recommend choosing the larger size for a relaxed, modern
-                        silhouette.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">What is your return
-                            policy?</strong>
-                        We accept returns of unworn, unwashed items in their original packaging within 14 days of
-                        delivery. Simply contact our support team to initiate the process.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Do you offer
-                            international shipping?</strong>
-                        Yes, we ship our collections worldwide. Shipping rates and delivery windows are automatically
-                        calculated at checkout based on your destination.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">How long does shipping
-                            take?</strong>
-                        Standard domestic shipping typically takes 3-5 business days. International shipping varies by
-                        location but generally arrives within 7-14 business days.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Can I track my
-                            order?</strong>
-                        Absolutely. Once your order has been dispatched, you will receive an email with a tracking
-                        number and a link to monitor your delivery's progress in real-time.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Are your materials
-                            sustainably sourced?</strong>
-                        Sustainability is at our core. We partner with ethical suppliers to source premium organic
-                        cotton and recycled fabrics, ensuring minimal environmental impact.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Can I change or cancel
-                            my order?</strong>
-                        Orders are processed quickly, but we will do our best to accommodate changes if requested within
-                        2 hours of placement. Please contact us immediately via our support team.
-                        <br><br>
-                        <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Do you offer gift
-                            wrapping?</strong>
-                        Yes, we provide elegant gift packaging options at checkout. Each item is carefully wrapped in
-                        our signature eco-friendly tissue and placed in a premium gift box.
+                <p class="font-sans text-gray-600 mb-8">Got questions? Our AI assistant is here to help! 💬</p>
 
-                    </span>
-                </p>
+                <!-- FAQ Accordion -->
+                <div class="faq-accordion mt-8">
+                    <p class="font-sans text-lg text-gray-700 leading-relaxed">
+                        <span class="block text-left">
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">How do I find my
+                                perfect fit?</strong>
+                            Each product page includes a detailed size guide tailored to the specific cut and fabric of
+                            the
+                            garment. If you are between sizes, we recommend choosing the larger size for a relaxed,
+                            modern
+                            silhouette.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">What is your return
+                                policy?</strong>
+                            We accept returns of unworn, unwashed items in their original packaging within 14 days of
+                            delivery. Simply contact our support team to initiate the process.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Do you offer
+                                international shipping?</strong>
+                            Yes, we ship our collections worldwide. Shipping rates and delivery windows are
+                            automatically
+                            calculated at checkout based on your destination.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">How long does
+                                shipping
+                                take?</strong>
+                            Standard domestic shipping typically takes 3-5 business days. International shipping varies
+                            by
+                            location but generally arrives within 7-14 business days.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Can I track my
+                                order?</strong>
+                            Absolutely. Once your order has been dispatched, you will receive an email with a tracking
+                            number and a link to monitor your delivery's progress in real-time.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Are your materials
+                                sustainably sourced?</strong>
+                            Sustainability is at our core. We partner with ethical suppliers to source premium organic
+                            cotton and recycled fabrics, ensuring minimal environmental impact.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Can I change or
+                                cancel
+                                my order?</strong>
+                            Orders are processed quickly, but we will do our best to accommodate changes if requested
+                            within
+                            2 hours of placement. Please contact us immediately via our support team.
+                            <br><br>
+                            <strong class="block text-xl font-serif font-bold mb-2 text-royal-black">Do you offer gift
+                                wrapping?</strong>
+                            Yes, we provide elegant gift packaging options at checkout. Each item is carefully wrapped
+                            in
+                            our signature eco-friendly tissue and placed in a premium gift box.
+
+                        </span>
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="py-20 sm:py-28 bg-beige text-royal-black ">
+        <section id="about" class="py-20 sm:py-28 bg-gray-400 text-royal-black ">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="overflow-hidden rounded-lg skeleton">
@@ -1015,59 +1010,62 @@
         </div>
     </div>
 
+    <section id=footer>
+        <footer class="bg-royal-black text-ivory/70 pt-20 pb-10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
 
-    <footer class="bg-royal-black text-ivory/70 pt-20 pb-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                    <div>
+                        <a href="#home" class="text-4xl font-serif font-bold text-ivory mb-4 block">
+                            Fusion
+                        </a>
+                        <p class="font-sans text-sm max-w-xs">
+                            Fusion is a premium fashion brand that combines the best of premium quality with modern
+                            design.
+                        </p>
+                    </div>
 
-                <div>
-                    <a href="#home" class="text-4xl font-serif font-bold text-ivory mb-4 block">
-                        Fusion
-                    </a>
-                    <p class="font-sans text-sm max-w-xs">
-                        Fusion is a premium fashion brand that combines the best of premium quality with modern design.
-                    </p>
+                    <div>
+                        <h5 class="text-lg font-serif font-bold text-ivory mb-4">Quick Links</h5>
+                        <ul class="space-y-3">
+                            <li><a href="#shop-by-collection" class="hover:text-ivory transition-colors">Collections</a>
+                            </li>
+                            <li><a href="#about" class="hover:text-ivory transition-colors">Our Story</a></li>
+                            <li><a href="#limited" class="hover:text-ivory transition-colors">Limited Edition</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="text-lg font-serif font-bold text-ivory mb-4">Support</h5>
+                        <ul class="space-y-3">
+                            <li><button type="button" id="open-shipping-modal"
+                                    class="hover:text-ivory transition-colors text-left">Shipping & Returns</button>
+                            </li>
+                            <li><button type="button" id="open-sizing-modal"
+                                    class="hover:text-ivory transition-colors text-left">Sizing Guide</button></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="text-lg font-serif font-bold text-ivory mb-4">Contact</h5>
+                        <ul class="space-y-3">
+                            <li><a href="mailto:info@fusion.com"
+                                    class="hover:text-ivory transition-colors">info@fusion.com</a>
+                            </li>
+                            <li><a href="tel:+910000000000" class="hover:text-ivory transition-colors">+91 (000)
+                                    000-0000</a></li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                <div>
-                    <h5 class="text-lg font-serif font-bold text-ivory mb-4">Quick Links</h5>
-                    <ul class="space-y-3">
-                        <li><a href="#shop-by-collection" class="hover:text-ivory transition-colors">Collections</a>
-                        </li>
-                        <li><a href="#about" class="hover:text-ivory transition-colors">Our Story</a></li>
-                        <li><a href="#limited" class="hover:text-ivory transition-colors">Limited Edition</a></li>
-                    </ul>
-                </div>
+                <div class="mt-16 pt-8 border-t border-ivory/20 text-center">
+                    <p class="font-sans text-sm">&copy; 2025 Fusion. All Rights Reserved.<br>
 
-                <div>
-                    <h5 class="text-lg font-serif font-bold text-ivory mb-4">Support</h5>
-                    <ul class="space-y-3">
-                        <li><button type="button" id="open-shipping-modal"
-                                class="hover:text-ivory transition-colors text-left">Shipping & Returns</button></li>
-                        <li><button type="button" id="open-sizing-modal"
-                                class="hover:text-ivory transition-colors text-left">Sizing Guide</button></li>
-                    </ul>
                 </div>
-
-                <div>
-                    <h5 class="text-lg font-serif font-bold text-ivory mb-4">Contact</h5>
-                    <ul class="space-y-3">
-                        <li><a href="mailto:info@fusion.com"
-                                class="hover:text-ivory transition-colors">info@fusion.com</a>
-                        </li>
-                        <li><a href="tel:+910000000000" class="hover:text-ivory transition-colors">+91 (000)
-                                000-0000</a></li>
-                    </ul>
-                </div>
-
             </div>
-
-            <div class="mt-16 pt-8 border-t border-ivory/20 text-center">
-                <p class="font-sans text-sm">&copy; 2025 Fusion. All Rights Reserved.<br>
-
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </section>
 
     <button id="music-toggle-btn" type="button" title="Toggle music" class="hidden">
         <svg id="music-on-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -1121,6 +1119,226 @@
         </div>
     </div>
 
+
+
+    <div id="faq-chat-container" class="faq-chat-container">
+        <!-- Chat Header -->
+        <div class="faq-chat-header px-4 py-3 bg-royal-black text-ivory flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-2 H-2 bg-green-500 rounded-full animate-pulse"></div>
+                <h3 class="font-serif font-bold text-sm">Fusion Assistant</h3>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="faq-chat-clear"
+                    class="text-[10px] uppercase tracking-widest text-ivory hover:text-ivory transition-colors">Clear</button>
+                <button id="faq-chat-close" class="text-ivory/80 hover:text-ivory">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="faq-chat-suggestions p-3 border-b border-gray-100 gap-2 flex-wrap text-xs">
+            <button class="faq-suggestion-btn px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full"
+                data-question="Return policy?">Returns</button>
+            <button class="faq-suggestion-btn px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full"
+                data-question="Sizing help?">Sizing</button>
+            <button class="faq-suggestion-btn px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full"
+                data-question="Shipping info?">Shipping</button>
+        </div>
+
+        <!-- Confirmation Overlay -->
+        <div id="chat-confirm-overlay"
+            class="absolute inset-0 z-[40] bg-white/95 backdrop-blur-sm hidden flex flex-col items-center justify-center p-8 text-center transition-all duration-300 opacity-0 scale-95">
+            <div class="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center mb-4 text-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                </svg>
+            </div>
+            <h3 class="text-xl font-serif text-royal-black mb-2">Clear Chat?</h3>
+            <p class="text-sm text-gray-500 font-sans mb-8">This will permanently delete your conversation history with
+                Fusion AI.</p>
+            <div class="flex flex-col w-full gap-3">
+                <button id="chat-confirm-ok"
+                    class="w-full py-3 bg-red-600 text-white rounded-full font-semibold text-xs uppercase tracking-widest hover:bg-red-700 transition-colors shadow-lg">
+                    Clear History
+                </button>
+                <button id="chat-confirm-cancel"
+                    class="w-full py-3 bg-gray-100 text-gray-600 rounded-full font-semibold text-xs uppercase tracking-widest hover:bg-gray-200 transition-colors">
+                    Cancel
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="faq-chat-messages" class="faq-chat-messages flex-1 p-4 overflow-y-auto space-y-3 bg-white">
+            <!-- Messages injected here -->
+        </div>
+
+        <!-- Chat Input -->
+        <div class="faq-chat-input-container p-3 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
+            <div class="flex gap-2">
+                <input type="text" id="faq-chat-input"
+                    class="flex-1 px-3 py-2 text-sm bg-white border border-gray-200 rounded-full focus:outline-none focus:border-royal-black transition-colors"
+                    placeholder="Message..." autocomplete="off">
+                <button id="faq-chat-send"
+                    class="w-8 h-8 flex items-center justify-center bg-royal-black text-ivory rounded-full hover:bg-black transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                        stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                </button>
+            </div>
+            <p class="text-[10px] text-gray-400 font-sans text-center">Fusion AI can make mistakes. Check important
+                info.</p>
+        </div>
+    </div>
+
+    <!-- Modern Filter Modal -->
+    <div id="filter-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="filter-modal-title" role="dialog"
+        aria-modal="true">
+        <div id="filter-backdrop" class="fixed inset-0 bg-royal-black/20 backdrop-blur-md transition-opacity"
+            aria-hidden="true"></div>
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div id="filter-panel" data-transition-type="fade-scale"
+                class="relative w-full max-w-lg bg-ivory rounded-3xl shadow-2xl overflow-hidden flex flex-col transform transition-all duration-300 opacity-0 scale-95">
+                <div class="flex items-center justify-between px-8 py-6 border-b border-gray-100">
+                    <h2 class="text-2xl font-serif text-royal-black" id="filter-modal-title">Filters</h2>
+                    <button id="close-filter-modal" type="button"
+                        class="p-2 text-royal-black hover:bg-gray-100 rounded-full transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto px-8 py-6 space-y-8">
+                    <!-- Styles Section -->
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-4">Style</h3>
+                        <div class="flex flex-wrap gap-2" id="filter-options-material">
+                            <button data-value="all" class="filter-option-btn active">All Styles</button>
+                            <button data-value="casual" class="filter-option-btn">Casual</button>
+                            <button data-value="formal" class="filter-option-btn">Formal</button>
+                            <button data-value="athleisure" class="filter-option-btn">Athleisure</button>
+                            <button data-value="streetwear" class="filter-option-btn">Streetwear</button>
+                        </div>
+                    </div>
+
+                    <!-- Price Section -->
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-4">Price Range</h3>
+                        <div class="space-y-2" id="filter-options-price">
+                            <button data-value="all" class="filter-option-row active">
+                                <span>All Prices</span>
+                                <div class="check-icon"></div>
+                            </button>
+                            <button data-value="budget" class="filter-option-row">
+                                <span>Budget (Under ₹1,000)</span>
+                                <div class="check-icon"></div>
+                            </button>
+                            <button data-value="mid" class="filter-option-row">
+                                <span>Mid (₹1,000-₹2,000)</span>
+                                <div class="check-icon"></div>
+                            </button>
+                            <button data-value="premium" class="filter-option-row">
+                                <span>Premium (₹2,000+)</span>
+                                <div class="check-icon"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div>
+                        <h3 class="text-sm uppercase tracking-widest text-gray-400 font-bold mb-4">Features</h3>
+                        <div class="flex flex-wrap gap-2" id="filter-options-features">
+                            <button data-value="all" class="filter-option-btn active">All</button>
+                            <button data-value="minimalist" class="filter-option-btn">Minimalist</button>
+                            <button data-value="graphic" class="filter-option-btn">Graphic</button>
+                            <button data-value="layered" class="filter-option-btn">Layered</button>
+                            <button data-value="oversized" class="filter-option-btn">Oversized</button>
+                            <button data-value="fitted" class="filter-option-btn">Fitted</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-8 py-6 bg-gray-50 border-t border-gray-100 flex gap-4">
+                    <button id="clear-all-filters-btn"
+                        class="flex-1 py-4 text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-royal-black transition-colors">Clear
+                        All</button>
+                    <button id="apply-filters-btn"
+                        class="flex-1 py-4 bg-royal-black text-ivory rounded-full text-sm font-bold uppercase tracking-widest hover:bg-gray-800 shadow-lg transition-all">Show
+                        Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Sort Modal -->
+    <div id="sort-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="sort-modal-title" role="dialog"
+        aria-modal="true">
+        <div id="sort-backdrop" class="fixed inset-0 bg-royal-black/20 backdrop-blur-md transition-opacity"
+            aria-hidden="true"></div>
+        <div class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+            <div id="sort-panel" data-transition-type="slide-y"
+                class="relative w-full max-w-sm bg-ivory rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col transform transition-all duration-300 opacity-0 translate-y-full sm:translate-y-0 sm:scale-95">
+                <div class="flex items-center justify-between px-8 py-6 border-b border-gray-100">
+                    <h2 class="text-xl font-serif text-royal-black" id="sort-modal-title">Sort By</h2>
+                    <button id="close-sort-modal" type="button"
+                        class="p-2 text-royal-black hover:bg-gray-100 rounded-full transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="p-4 space-y-1" id="sort-options-list">
+                    <button data-value="default" class="sort-option-item active">
+                        Default
+                        <svg class="w-5 h-5 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                    <button data-value="name-asc" class="sort-option-item">
+                        Name: A-Z
+                        <svg class="w-5 h-5 opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                    <button data-value="name-desc" class="sort-option-item">
+                        Name: Z-A
+                        <svg class="w-5 h-5 opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                    <button data-value="price-asc" class="sort-option-item">
+                        Price: Low to High
+                        <svg class="w-5 h-5 opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                    <button data-value="price-desc" class="sort-option-item">
+                        Price: High to Low
+                        <svg class="w-5 h-5 opacity-0 transition-opacity" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/Javascript/main.js" defer></script>
     <script src="assets/Javascript/toast-message.js" defer></script>
     <script src="assets/Javascript/modal-logic.js" defer></script>
@@ -1131,6 +1349,7 @@
     <script src="assets/Javascript/recent-view.js" defer></script>
     <script src="assets/Javascript/shortcuts.js" defer></script>
     <script src="assets/Javascript/cookie-consent.js" defer></script>
+    <script src="assets/Javascript/faq-chatbot.js" defer></script>
 </body>
 
 </html>

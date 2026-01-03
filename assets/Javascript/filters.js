@@ -9,16 +9,121 @@ const initializeCollectionNavigation = () => {
     const collectionTitle = document.getElementById('collection-title');
     const productViewControls = document.getElementById('product-view-controls');
     const searchInput = document.getElementById('product-search-input');
+
+    // Selects (now hidden)
     const sortSelect = document.getElementById('product-sort-select');
     const filterMaterial = document.getElementById('filter-material');
     const filterPriceRange = document.getElementById('filter-price-range');
     const filterFeatures = document.getElementById('filter-features');
+
+    // Modal Buttons
+    const openFiltersBtn = document.getElementById('open-filters-btn');
+    const openSortBtn = document.getElementById('open-sort-btn');
+    const filterCountBadge = document.getElementById('filter-count-badge');
+    const currentSortLabel = document.getElementById('current-sort-label');
+
     let currentCollectionFilter = '';
 
     // Guard against missing elements
     if (!productGrid || !collectionCardGrid || !backButton || !collectionTitle || collectionCards.length === 0 || !productViewControls || !searchInput || !sortSelect || !filterMaterial || !filterPriceRange || !filterFeatures) {
         console.warn("Collection navigation, search, sort or filter elements are missing.");
         return;
+    }
+
+    // --- Modal Initialization ---
+    const filterModalCtl = typeof initializeModal === 'function' ? initializeModal({
+        modal: document.getElementById('filter-modal'),
+        panel: document.getElementById('filter-panel'),
+        openBtns: [openFiltersBtn],
+        closeBtn: document.getElementById('close-filter-modal'),
+        backdrop: document.getElementById('filter-backdrop')
+    }) : null;
+
+    const sortModalCtl = typeof initializeModal === 'function' ? initializeModal({
+        modal: document.getElementById('sort-modal'),
+        panel: document.getElementById('sort-panel'),
+        openBtns: [openSortBtn],
+        closeBtn: document.getElementById('close-sort-modal'),
+        backdrop: document.getElementById('sort-backdrop')
+    }) : null;
+
+    // --- Filter Modal Logic ---
+    const setupOptionButtons = (containerId, selectEl) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+
+            // Update UI
+            container.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update Select
+            selectEl.value = btn.dataset.value;
+
+            // Note: We don't update view immediately for filters, we wait for "Apply"
+        });
+    };
+
+    setupOptionButtons('filter-options-material', filterMaterial);
+    setupOptionButtons('filter-options-price', filterPriceRange);
+    setupOptionButtons('filter-options-features', filterFeatures);
+
+    const applyFiltersBtn = document.getElementById('apply-filters-btn');
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', () => {
+            updateProductView();
+            if (filterModalCtl) filterModalCtl.close();
+        });
+    }
+
+    const clearAllFiltersBtn = document.getElementById('clear-all-filters-btn');
+    if (clearAllFiltersBtn) {
+        clearAllFiltersBtn.addEventListener('click', () => {
+            [filterMaterial, filterPriceRange, filterFeatures].forEach(sel => sel.value = 'all');
+
+            // Reset UI
+            ['filter-options-material', 'filter-options-price', 'filter-options-features'].forEach(id => {
+                const cont = document.getElementById(id);
+                if (cont) {
+                    cont.querySelectorAll('button').forEach(b => {
+                        if (b.dataset.value === 'all') b.classList.add('active');
+                        else b.classList.remove('active');
+                    });
+                }
+            });
+
+            updateProductView();
+        });
+    }
+
+    // --- Sort Modal Logic ---
+    const sortOptionsList = document.getElementById('sort-options-list');
+    if (sortOptionsList) {
+        sortOptionsList.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+
+            // Update UI
+            sortOptionsList.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Update Select
+            sortSelect.value = btn.dataset.value;
+
+            // Update Label
+            if (currentSortLabel) {
+                currentSortLabel.textContent = btn.textContent.trim();
+            }
+
+            // Update View & Close
+            updateProductView();
+            setTimeout(() => {
+                if (sortModalCtl) sortModalCtl.close();
+            }, 200);
+        });
     }
 
     // Function to filter, search, and sort products
@@ -82,6 +187,7 @@ const initializeCollectionNavigation = () => {
             productGrid.innerHTML = `<p class="col-span-full text-center text-gray-600 font-sans py-12">No products found matching your criteria.</p>`;
         }
         updateActiveFiltersDisplay();
+        updateFilterBadges();
     };
 
     const activeFiltersContainer = document.getElementById('active-filters-container');
@@ -96,9 +202,9 @@ const initializeCollectionNavigation = () => {
         activeFiltersContainer.innerHTML = '';
 
         const filters = [
-            { id: 'material', label: filterMaterial.options[filterMaterial.selectedIndex].text, value: materialVal, element: filterMaterial },
-            { id: 'price', label: filterPriceRange.options[filterPriceRange.selectedIndex].text, value: priceVal, element: filterPriceRange },
-            { id: 'features', label: filterFeatures.options[filterFeatures.selectedIndex].text, value: featuresVal, element: filterFeatures }
+            { id: 'material', label: filterMaterial.options[filterMaterial.selectedIndex].text, value: materialVal, element: filterMaterial, containerId: 'filter-options-material' },
+            { id: 'price', label: filterPriceRange.options[filterPriceRange.selectedIndex].text, value: priceVal, element: filterPriceRange, containerId: 'filter-options-price' },
+            { id: 'features', label: filterFeatures.options[filterFeatures.selectedIndex].text, value: featuresVal, element: filterFeatures, containerId: 'filter-options-features' }
         ];
 
         const activeFilters = filters.filter(f => f.value !== 'all');
@@ -107,10 +213,10 @@ const initializeCollectionNavigation = () => {
             activeFiltersContainer.classList.remove('hidden');
             activeFilters.forEach(filter => {
                 const pill = document.createElement('div');
-                pill.className = 'inline-flex items-center bg-gray-200 text-royal-black text-sm px-3 py-1 rounded-full animate-fade-in';
+                pill.className = 'inline-flex items-center bg-royal-black text-ivory text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full animate-fade-in shadow-sm';
                 pill.innerHTML = `
                     <span>${filter.label}</span>
-                    <button type="button" class="ml-2 text-gray-500 hover:text-royal-black focus:outline-none" aria-label="Remove ${filter.label} filter">
+                    <button type="button" class="ml-2 text-ivory/60 hover:text-ivory focus:outline-none" aria-label="Remove ${filter.label} filter">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12" />
                         </svg>
@@ -119,6 +225,16 @@ const initializeCollectionNavigation = () => {
 
                 pill.querySelector('button').addEventListener('click', () => {
                     filter.element.value = 'all';
+
+                    // Sync Modal UI
+                    const modalCont = document.getElementById(filter.containerId);
+                    if (modalCont) {
+                        modalCont.querySelectorAll('button').forEach(b => {
+                            if (b.dataset.value === 'all') b.classList.add('active');
+                            else b.classList.remove('active');
+                        });
+                    }
+
                     updateProductView();
                 });
 
@@ -126,6 +242,22 @@ const initializeCollectionNavigation = () => {
             });
         } else {
             activeFiltersContainer.classList.add('hidden');
+        }
+    };
+
+    const updateFilterBadges = () => {
+        let count = 0;
+        if (filterMaterial.value !== 'all') count++;
+        if (filterPriceRange.value !== 'all') count++;
+        if (filterFeatures.value !== 'all') count++;
+
+        if (filterCountBadge) {
+            if (count > 0) {
+                filterCountBadge.textContent = count;
+                filterCountBadge.classList.remove('hidden');
+            } else {
+                filterCountBadge.classList.add('hidden');
+            }
         }
     };
 
@@ -153,26 +285,18 @@ const initializeCollectionNavigation = () => {
         // Hide product grid and controls
         productGrid.classList.add('hidden');
         productViewControls.classList.add('hidden');
+        if (activeFiltersContainer) activeFiltersContainer.classList.add('hidden');
 
         // Show collection cards & title
         collectionCardGrid.classList.remove('hidden');
         collectionTitle.classList.remove('hidden');
 
-        // Reset search, sort, and filters
-        searchInput.value = '';
-        sortSelect.value = 'default';
-        filterMaterial.value = 'all';
-        filterPriceRange.value = 'all';
-        filterFeatures.value = 'all';
+        // We DO NOT reset the filter/sort values here so they persist across collections
         currentCollectionFilter = '';
     });
 
     // Add listeners to controls
     searchInput.addEventListener('input', updateProductView);
-    sortSelect.addEventListener('change', updateProductView);
-    filterMaterial.addEventListener('change', updateProductView);
-    filterPriceRange.addEventListener('change', updateProductView);
-    filterFeatures.addEventListener('change', updateProductView);
 
     // Reset Filters Button Logic
     const resetBtn = document.getElementById('reset-filters-btn');
@@ -183,6 +307,19 @@ const initializeCollectionNavigation = () => {
             filterMaterial.value = 'all';
             filterPriceRange.value = 'all';
             filterFeatures.value = 'all';
+
+            // Reset UI
+            if (currentSortLabel) currentSortLabel.textContent = 'Default';
+            ['filter-options-material', 'filter-options-price', 'filter-options-features'].forEach(id => {
+                const cont = document.getElementById(id);
+                if (cont) {
+                    cont.querySelectorAll('button').forEach(b => {
+                        if (b.dataset.value === 'all') b.classList.add('active');
+                        else b.classList.remove('active');
+                    });
+                }
+            });
+
             updateProductView();
         });
     }
